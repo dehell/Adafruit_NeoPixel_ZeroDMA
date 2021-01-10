@@ -313,6 +313,14 @@ struct {
   &sercom3, SERCOM3, SERCOM3_DMAC_ID_TX,   16, SPI_PAD_0_SCK_1, PIO_SERCOM,
 #endif  
 
+#if defined(SEEED_XIAO_M0)
+  // first MOSI is a possible pin
+  // PA06 (pin 11 on cpu), alternate Sercom0-position
+  &sercom0, SERCOM0, SERCOM0_DMAC_ID_TX, MOSI, SPI_PAD_2_SCK_3, PIO_SERCOM_ALT,
+  // and PA10 (pin 15) (Arduino 2), alt. Sercom2-position
+  &sercom2, SERCOM2, SERCOM2_DMAC_ID_TX, 2, SPI_PAD_2_SCK_3, PIO_SERCOM_ALT,
+#endif 
+
 #if defined(USB_PID) && (USB_PID == 0x804d) // ARDUINO ZERO
   &sercom1, SERCOM1, SERCOM1_DMAC_ID_TX,   12, SPI_PAD_3_SCK_1, PIO_SERCOM,
   &sercom2, SERCOM2, SERCOM2_DMAC_ID_TX,    5, SPI_PAD_3_SCK_1, PIO_SERCOM,
